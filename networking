@@ -1,0 +1,18 @@
+NETWORK
+resolvctl						for  DNS info
+systemd-resolve --status
+nslookup						dns server lookup
+dig							dns server lookup 
+tcpdump -i <iface> [icmp | port #]			dump tcp packets for an interface and traffic filters
+
+
+KERNET ROUTING TABLES
+/etc/iproute2/rt_tables					contains tables for interfaces
+/proc/sys/net/ipv4/ip_forward/				enable or disable ip forwarding
+cat /proc/sys/net/ipv4/conf/<interface_name>/rp_filter	reverse path filtering enable or disable, interface name can also be 'all' which will apply if there are no specific settings for an interface
+/etc/sysctl.conf					for reboot persitence; table #s below 100 may be reserved by system; net.ipv4.conf.<interface_name>.rp_filter = 0
+sysctl net.ipv4.conf.<all>.rp_filter			another way to check setting
+ip route show						display routing tables
+route							display routing table
+netstat -r						display routing table
+

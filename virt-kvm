@@ -1,0 +1,18 @@
+Always run as root
+
+CREATE AND INSTALL ISO TO NEW VM
+sudo virt-install --reinstall arch-proto --os-variant archlinux --memory 4096 --vcpus 2 --disk size=20 --location /downloads/archlinux-2023.09.01-x86_64.iso,initrd=/arch/boot/x86_64/initramfs-linux.img,kernel='/arch/boot/x86_64/vmlinuz-linux' --graphics none --extra-args 'console=tty0 console=ttyS0,115200n8 --- console=tty0 console=ttyS0,115200n8 archisolabel=ARCH_202309' --console pty,target_type=serial --tpm model='tpm-tis',type=emulator,version='2.0'flush_resume		Reset resume file to zeros which will provide full installation
+controller		Install controller node package list
+computenode		Install compute node package list
+cindernode		Install packages for block storage node
+swiftnode		Install glance object storage node"
+
+SERIAL OPTIONS 
+--nographics --extra-args console=ttyS0
+
+LIST VMS
+virsh list
+LIST VOLUMES / DISKS
+virsh vol-list --pool default --detail
+
+
