@@ -4,7 +4,7 @@ systemd-resolve --status
 nslookup						dns server lookup
 dig							dns server lookup 
 tcpdump -i <iface> [icmp | port #]			dump tcp packets for an interface and traffic filters
-
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 2222:22 tux@host
 
 KERNET ROUTING TABLES
 /etc/iproute2/rt_tables					contains tables for interfaces
@@ -12,7 +12,8 @@ KERNET ROUTING TABLES
 cat /proc/sys/net/ipv4/conf/<interface_name>/rp_filter	reverse path filtering enable or disable, interface name can also be 'all' which will apply if there are no specific settings for an interface
 /etc/sysctl.conf					for reboot persitence; table #s below 100 may be reserved by system; net.ipv4.conf.<interface_name>.rp_filter = 0
 sysctl net.ipv4.conf.<all>.rp_filter			another way to check setting
+route							display main only routing table
+netstat -r						display main only routing table
 ip route show						display routing tables
-route							display routing table
-netstat -r						display routing table
-
+ip route show table <table name>			display routes for specific table
+ip route show table all					display all tables
