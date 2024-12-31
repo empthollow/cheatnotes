@@ -99,7 +99,8 @@ ssh-agent
 #redhat
 exec ssh-agent bash
 ssh-add
-
+#also redhat
+eval "$(ssh-agent)" && ssh-add ~/.ssh/github
 
 # git can be authenticated with ssh using key pair and an ssh url
 git@github.com:USER/REPOSITORY.git
