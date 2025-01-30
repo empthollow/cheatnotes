@@ -1,0 +1,47 @@
+### ssh syntax ###
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 2222:22 tux@host
+sshkeygen -t [ed25519] -f [filename]			create ssh key
+ssh-copy-id -i [identity file] [user@host]		copy to another host
+ssh-add [key file]					add to 'keyring'
+
+### tmux ###
+crtl+b d 						detach
+tmux list-sessions					list active sessions
+tmux attach-session -t [#]				attach specific session
+ctrl+b $						rename current session
+ctrl+b ?						list all bindings
+ctrl+b "						split window horizontal
+ctrl+b %						split window vertical
+ctrl+b [arrow]						select pane to direction
+ctrl+b C+[arrow]					resize pane
+ctrl+b &						kill current window
+ctrl+b c						create new window
+ctrl+b [#]						go to window number
+ctrl+b w						choose window / session from a list
+
+### vim ###
+:syntax sync fromstart					reload syntax highlighting
+:%s/[search]/[replace]/g				find and replace all in doc
+
+### network tools ###
+ping -I 172.22.2.2 8.8.8.8				ping from specific source
+traceroute -s 172.22.2.2 8.8.8.8			trace from specific source
+resolvctl						for  DNS info
+systemd-resolve --status
+nslookup						dns server lookup
+dig							dns server lookup 
+tcpdump -i <iface> [icmp | port #]			dump tcp packets for an interface and traffic filters
+route							display main only routing table
+netstat -r						display main only routing table
+ip route show						display routing tables
+ip route show table <table name>			display routes for specific table
+ip route show table all					display all tables
+
+### set kernel routing tables ###
+/etc/iproute2/rt_tables					contains tables for interfaces
+/proc/sys/net/ipv4/ip_forward/				enable or disable ip forwarding
+cat /proc/sys/net/ipv4/conf/<interface_name>/rp_filter	reverse path filtering enable or disable, interface name can also be 'all' which will apply if there are no specific settings for an interface
+/etc/sysctl.conf					for reboot persitence; table #s below 100 may be reserved by system; net.ipv4.conf.<interface_name>.rp_filter = 0; net.ipv4.conf.<iface or 'all'>.rp_filter = 0 ; net.ipv4.ip_forward = 1
+sysctl net.ipv4.conf.<all>.rp_filter			another way to check setting
+nmcli con option: ipv4.ignore-auto-routes yes		mitigate auto rules which may conflict with custom
+nmcli con option: ipv4.never-default yes		ensures default route is not auto added

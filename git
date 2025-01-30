@@ -132,3 +132,6 @@ git fetch REPOSITORY
 
 # view changes between fetched and local
 git diff REPOSITORY/BRANCH
+
+# when local will not push to server
+git rebase cos-node-setup/main --onto cos-node-setup/main
