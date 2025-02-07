@@ -1,6 +1,7 @@
 ### ssh syntax ###
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 2222:22 tux@host
-sshkeygen -t [ed25519] -f [filename]			create ssh key
+ssh-keygen -t [ed25519] -f [filename]			create ssh key
+ssh-keygen -R [host]					remove from known_hosts
 ssh-copy-id -i [identity file] [user@host]		copy to another host
 ssh-add [key file]					add to 'keyring'
 

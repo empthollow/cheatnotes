@@ -135,3 +135,6 @@ git diff REPOSITORY/BRANCH
 
 # when local will not push to server
 git rebase cos-node-setup/main --onto cos-node-setup/main
+
+# This applies your local changes on top of the latest remote changes.
+git pull --rebase origin <branch>
