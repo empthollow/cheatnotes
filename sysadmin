@@ -30,6 +30,11 @@ journalctl -n						recent, last 10 entries
 journalctl -n [15]					last 15 entries
 journalctl -f						follow log file in real time
 journalctl -b						log from last boot
+journalctl -u [systemd unit]				show logs for systemd unit
+journalctl --since [2025-03-28 12:00:00]		show after date & time can also use "10 minutes ago'
+journalctl --until					same as since but before specified time
+journalctl --list-boots					show persistent boot files
+journalctl -b [id from list]				show the chosen boot file
 
 
 
@@ -56,3 +61,14 @@ cat /proc/sys/net/ipv4/conf/<interface_name>/rp_filter	reverse path filtering en
 sysctl net.ipv4.conf.<all>.rp_filter			another way to check setting
 nmcli con option: ipv4.ignore-auto-routes yes		mitigate auto rules which may conflict with custom
 nmcli con option: ipv4.never-default yes		ensures default route is not auto added
+
+### flatpak ###
+flatpak list						view installed packages
+flatpak list --app --columns=application,runtime	view application ID & runtime dependancies
+flatpak remove --unused					remove old packages
+flatpak remote-ls --updates				view available upgrades
+flatpak override <package ID> --filesystem=</path/>	give application filesystem access; =home - home dir; =host - full system
+flatpak	--installations					print paths for installations
+flatpak kill						kill app
+flatpak info						show info for an app
+
