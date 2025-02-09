@@ -9,12 +9,13 @@ ssh-add [key file]					add to 'keyring'
 crtl+b d 						detach
 tmux list-sessions					list active sessions
 tmux attach-session -t [#]				attach specific session
+ctrl+b <						window menu
 ctrl+b $						rename current session
 ctrl+b ?						list all bindings
 ctrl+b "						split window horizontal
 ctrl+b %						split window vertical
 ctrl+b [arrow]						select pane to direction
-ctrl+b C+[arrow]					resize pane
+ctrl+b alt+[arrow]					resize pane by 5
 ctrl+b &						kill current window
 ctrl+b c						create new window
 ctrl+b [#]						go to window number
@@ -23,6 +24,15 @@ ctrl+b w						choose window / session from a list
 ### vim ###
 :syntax sync fromstart					reload syntax highlighting
 :%s/[search]/[replace]/g				find and replace all in doc
+
+### journalctl ###
+journalctl -n						recent, last 10 entries
+journalctl -n [15]					last 15 entries
+journalctl -f						follow log file in real time
+journalctl -b						log from last boot
+
+
+
 
 ### network tools ###
 ping -I 172.22.2.2 8.8.8.8				ping from specific source
