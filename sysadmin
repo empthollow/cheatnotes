@@ -37,8 +37,6 @@ journalctl --list-boots					show persistent boot files
 journalctl -b [id from list]				show the chosen boot file
 
 
-
-
 ### network tools ###
 ping -I 172.22.2.2 8.8.8.8				ping from specific source
 traceroute -s 172.22.2.2 8.8.8.8			trace from specific source
@@ -71,4 +69,10 @@ flatpak override <package ID> --filesystem=</path/>	give application filesystem 
 flatpak	--installations					print paths for installations
 flatpak kill						kill app
 flatpak info						show info for an app
+
+### firewall-cmd ###
+firewall-cmd --list-ports
+firewall-cmd --add-port=[PORT]/[tcp|udp] --permanent
+firewall-cmd --reload
+firewall-cmd --list-all
 
