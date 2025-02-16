@@ -24,17 +24,19 @@ ctrl+b w						choose window / session from a list
 ### vim ###
 :syntax sync fromstart					reload syntax highlighting
 :%s/[search]/[replace]/g				find and replace all in doc
+:%g/[search]/exe "normal Otxt"				open line above search text and insert txt
 
 ### journalctl ###
 journalctl -n						recent, last 10 entries
 journalctl -n [15]					last 15 entries
 journalctl -f						follow log file in real time
-journalctl -b						log from last boot
 journalctl -u [systemd unit]				show logs for systemd unit
 journalctl --since [2025-03-28 12:00:00]		show after date & time can also use "10 minutes ago'
 journalctl --until					same as since but before specified time
 journalctl --list-boots					show persistent boot files
+journalctl -b						log from last boot
 journalctl -b [id from list]				show the chosen boot file
+journalctl -e						view end of log
 
 
 ### network tools ###
@@ -76,3 +78,30 @@ firewall-cmd --add-port=[PORT]/[tcp|udp] --permanent
 firewall-cmd --reload
 firewall-cmd --list-all
 
+### disk operations ###
+df -T							view partitions/ volums and filesystem types including lvm
+df -h							view partitions and free space in human readable
+lsblk -f						view block device info including fs type
+blkid							view block dev info including fs type and uuid
+mkfs.[fs]						create file system on partition / vol
+e2fsck -f						force filesystem check for ext fs
+fsck 							wrapper works with multiple fs types
+resize2fs [partition or logical volumem] [size]		resize file system for ext fs
+xfs_repair [device path]				fsck for xfs, checks fs and fixes errors
+xfs_repair -n [device path]				check fs but make no changes
+xfs_growfs [dev path]					grow filesystem to total size of partition or volume 
+
+### LVM ###
+pvdisplay [optional pv name]						display physical vol info
+vgdisplay [ optional vol group name]						display vol group info
+lvdisplay [optional logical vol name]						display logical vol info
+lvextend -L [total-new-size | +add-size]		grow the size of a vol by specifyinig total new amount or amount to add, M G T are acceptable labels for sizing
+lvcreate -L [size] -n [new_lv_name] [vg_name]		create logical vol in volume group
+lvcreate -l 100%FREE -n [new_lv_name] {vg_name]		create logical vol using the remaining space in the vol group; -l indicates size by percentage
+lvremove [device path]					delete logical vol
+
+### tar ###
+CREATE ARCHIVE
+tar -czvf [name].tar.gz --exclude=[reletive path] -C [path] .
+EXTRACT ARCHIVE
+tar xpzf [name].tar.gz -C [path to extract]
