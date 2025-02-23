@@ -19,3 +19,7 @@ virsh dominfo [vm-name]
 AUTOSTART VM
 virsh autostart [vm-name]
 virsh autostart --disable [vm-name]
+
+CREATE DISK IMAGE
+qemu-img create -f qcow2 [foobar].qcow2 [size]
+

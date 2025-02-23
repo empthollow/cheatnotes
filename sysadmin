@@ -25,6 +25,10 @@ ctrl+b w						choose window / session from a list
 :syntax sync fromstart					reload syntax highlighting
 :%s/[search]/[replace]/g				find and replace all in doc
 :%g/[search]/exe "normal Otxt"				open line above search text and insert txt
+:colorscheme [theme]					change syntax highlighting colors
+:set wrap						turn on word wrap
+:set nowrap						turn off word wrap
+set [wrap! | nowrap!]					toggle wrap
 
 ### journalctl ###
 journalctl -n						recent, last 10 entries
@@ -99,6 +103,7 @@ lvextend -L [total-new-size | +add-size]		grow the size of a vol by specifyinig 
 lvcreate -L [size] -n [new_lv_name] [vg_name]		create logical vol in volume group
 lvcreate -l 100%FREE -n [new_lv_name] {vg_name]		create logical vol using the remaining space in the vol group; -l indicates size by percentage
 lvremove [device path]					delete logical vol
+lvs							display information about logical vols
 
 ### tar ###
 CREATE ARCHIVE

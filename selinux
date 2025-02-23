@@ -2,6 +2,7 @@
 getenforce				get status
 setenforce				set enforcement status
 ls -Z					view selinux contexts
+restorecon [path]			restore selinux permissions after file operations
 
 ### viewing logs ###
 sealert -a /var/log/audit/audit.log	show all logs
