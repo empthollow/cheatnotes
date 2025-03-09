@@ -1,0 +1,9 @@
+PRINT PYTHONPATH
+python3 -c "import sys; print(sys.path)"
+
+EXPORT PATH
+export PYTHONPATH=/usr/share/openstack-dashboard:$PYTHONPATH
+
+IMPORT MODULE
+python3 -c "import [openstack_dashboard]"
+

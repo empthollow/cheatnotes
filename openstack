@@ -50,6 +50,7 @@ openstack server create ... --config-drive=true *looks like a cdrom to the VM
 openstack compute service list *parts of nova; requires admin
 
 NETWORK
+openstack network create --external --provider-physical-network [provider <defined in ml2_conf.ini> ]  --provider-network-type flat starburst
 openstack network create NETWORK
 openstack subnet create NETWORK-subnet --network NETWORK --subnet range x.x.x.x
 openstack network set --name OLD NEW
