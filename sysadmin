@@ -28,7 +28,11 @@ ctrl+b w						choose window / session from a list
 :colorscheme [theme]					change syntax highlighting colors
 :set wrap						turn on word wrap
 :set nowrap						turn off word wrap
-set [wrap! | nowrap!]					toggle wrap
+:set [wrap! | nowrap!]					toggle wrap
+:set filetype?						see what filetype vim recongnized for syntax
+:set filetype=[type]					set file type for syntax
+:set list						show line endings
+:set nolist						turn off show line endings
 
 ### journalctl ###
 journalctl -n						recent, last 10 entries

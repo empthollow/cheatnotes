@@ -22,9 +22,20 @@ virsh autostart --disable [vm-name]
 
 CREATE DISK IMAGE
 qemu-img create -f qcow2 [foobar].qcow2 [size]
+qemu-img resize /path/to/your.qcow2 +new_size
 
 CHANGE MAX LOCKED MEM FOR MEM ERRORS
 cat /proc/sys/vm/overcommit_memory
 sudo sysctl -w vm.overcommit_memory=1
 echo "vm.overcommit_memory=1" | sudo tee -a /etc/sysctl.conf
+
+ulimit -l # max mem locked
+ulimit -a # list all limits
+echo "* soft memlock unlimited" | sudo tee -a /etc/security/limits.conf
+echo "* hard memlock unlimited" | sudo tee -a /etc/security/limits.conf
+
+
+RESTART LIBVIRT
+sudo systemctl restart libvirtd
+sudo systemctl restart virtqemud
 
