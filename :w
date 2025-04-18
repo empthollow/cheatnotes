@@ -109,8 +109,6 @@ ovs-vsctl list Open_vSwitch # list config db for open vSwitch
 ovs-vsctl list interface
 ovs-vsctl add-br br-tun
 ovs-vsctl add-port br-tun vxlan0 -- set interface vxlan0 type=vxlan options:local_ip=172.22.2.21 options:remote_ip=flow options:key=flow
-ovs-ofctl dump-flows br-tun # checks openflow rules
-ovs-appctl fdb/show br-enp2s0 # show known mac addresses
 
 
 

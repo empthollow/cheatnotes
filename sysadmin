@@ -57,9 +57,12 @@ dig							dns server lookup
 tcpdump -i <iface> [icmp | port #]			dump tcp packets for an interface and traffic filters
 route							display main only routing table
 netstat -r						display main only routing table
+lsof -i :[port #]					show process server a specific port
 ip route show						display routing tables
 ip route show table <table name>			display routes for specific table
 ip route show table all					display all tables
+ip route get [IP]					display route to IP
+ip neigh show						show neighbors
 
 ### set kernel routing tables ###
 /etc/iproute2/rt_tables					contains tables for interfaces
