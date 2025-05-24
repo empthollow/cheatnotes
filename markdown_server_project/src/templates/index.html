@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown File List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 1em;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 0.5em 0;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Markdown Files</h1>
+    <ul>
+        {% for file in markdown_files %}
+            <li><a href="/{{ file }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+    <div id="content">
+        {% if selected_file %}
+            <h2>Content of {{ selected_file }}</h2>
+            <div>{{ content|safe }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

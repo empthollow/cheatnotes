@@ -28,9 +28,10 @@
    1. Subitem 1
    2. Subitem 2
 
-### Code
-#### Inline Code
-Use the `printf` function to display text.
+### Task List
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
 
 ### Footnote
 To insert the footnote in your text, the syntax is [^1] or [^footnote1]. The ^ character followed by an identifier inside brackets [] will create the footnote reference.
@@ -58,7 +59,30 @@ https://markdown-here.com/img/icon256.png
 | Header      | Title       |
 | Paragraph   | Text        |
 
-### Fenced Code Blocks for syntax highlighting
+### Code
+#### Inline Code
+`code`
+#### Fenced Code Blocks for syntax highlighting
 ```python
 def hello_world():
     print("Hello, world!")
+```
+
+
+
+### Horisontal Rule
+---
+
+### Emoji
+That is so funny! :joy:
+
+(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
+
+### Highlight
+==very important words==
+
+### Subscript
+H~2~O
+
+### Superscript
+X^2^

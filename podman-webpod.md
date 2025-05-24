@@ -1,3 +1,4 @@
+```bash
 #/bin/bash
 
 if [ "$(id -u)" != "0"]; then
@@ -15,5 +16,4 @@ ExecStart=/bin/redir -sn :80 127.0.0.1:8080
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/redir80.service
 systemctl enable --now redir80.service
-
-
+```
