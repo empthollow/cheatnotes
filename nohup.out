@@ -7,3 +7,17 @@
 192.168.1.204 - - [21/May/2025 06:58:32] "GET /sysadmin.md HTTP/1.1" 200 -
 192.168.1.165 - - [21/May/2025 10:28:18] "GET /git.md HTTP/1.1" 200 -
 192.168.1.204 - - [21/May/2025 18:33:40] "GET /wordpress.md HTTP/1.1" 200 -
+192.168.1.127 - - [24/May/2025 15:26:28] "GET /git.md HTTP/1.1" 200 -
+192.168.1.127 - - [26/May/2025 11:45:02] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Jun/2025 20:01:36] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Jun/2025 20:01:36] code 404, message File not found
+192.168.1.204 - - [10/Jun/2025 20:01:36] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.165 - - [12/Jun/2025 15:50:23] "GET /git.md HTTP/1.1" 200 -
+192.168.1.127 - - [13/Jun/2025 10:31:05] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.127 - - [13/Jun/2025 10:31:05] code 404, message File not found
+192.168.1.127 - - [13/Jun/2025 10:31:05] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [14/Jun/2025 21:10:58] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [14/Jun/2025 21:10:58] code 404, message File not found
+192.168.1.204 - - [14/Jun/2025 21:10:58] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [14/Jun/2025 21:11:05] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [14/Jun/2025 21:11:06] "GET /webmaster.md HTTP/1.1" 200 -
