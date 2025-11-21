@@ -7,7 +7,6 @@ restorecon [path]			restore selinux permissions after file operations
 ```
 
 # Viewing Logs
-
 ```bash
 sealert -a /var/log/audit/audit.log	show all logs
 sealert -l [#]				show specific alert details
