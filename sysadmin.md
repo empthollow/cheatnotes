@@ -23,6 +23,10 @@ Copy your public SSH key to a remote host for password-less login.
 ```bash
 ssh-copy-id -i [identity file] [user@host]
 ```
+or
+```bash
+cat [~/.ssh/id_*.pub] | ssh [user@host] "tee -a ~/.ssh/authorized_keys > /dev/null"
+```
 
 Add a key to the SSH authentication agent (keyring).  
 ```bash

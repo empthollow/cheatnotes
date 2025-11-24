@@ -3,6 +3,7 @@
 ```bash
 #!/bin/bash 
 ```
+
 ## error handling
 ### Error handling function
 ```bash
@@ -11,6 +12,7 @@ handle_error() {
   exit 1
 }
 ```
+
 ### Trap errors and call the error handler
 ```bash
 trap 'handle_error $LINENO' ERR
@@ -21,6 +23,7 @@ trap 'handle_error $LINENO' ERR
 ```bash
 for i in {1..5}; do COMMAND-HERE; done
 ```
+
 ## for loop script
 ```bash
 for VARIABLE in 1 2 3 4 5 .. N
@@ -53,5 +56,4 @@ else
   # code block to execute if string does not match regex pattern
 fi
 ```
-
 
