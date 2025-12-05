@@ -1,3 +1,44 @@
+# Management
+## user  
+add user to group
+-G - groups
+-a - append
+```bash
+usermod -G [group] -a [username]
+```
+add new user
+-m: Create the home directory for the new user.
+-s /bin/bash: Set the default shell for the new user (e.g., /bin/bash).
+-G groupname: Add the user comma separated supplementary groups
+-g groupname: Set the primary group for the new user.
+-u UID: Specify the user ID for the new user.
+-c "comment": Add a comment or description for the new user.
+-d /home/username: Specify the home directory for the new user.
+-D : create user with cli opts plus system defaults, defaults in /etc/default/useradd
+-k | --skel [skeleton directory] : default /etc/skel
+-p | --password [password] : add password in clear text
+```bash
+useradd -D -G [other_groups] -p [insecure_pw] -m [username]
+```
+
+## session
+update recently added group without exiting bash
+```bash
+newgrp [group name]
+```
+update service changes and unit files
+```bash
+systemctl daemon-reload
+```
+reset shell environment
+```bash
+exec "$SHELL"
+```
+fork a process to background and detach from shell session
+```bash
+nohup [command] &
+```
+
 # ssh syntax
 Connect to a remote server with SSH, disabling strict host key checking.  
 ```bash
@@ -498,6 +539,20 @@ xfs_repair -n [device path]
 Grow an XFS filesystem to fill the partition or volume.  
 ```bash
 xfs_growfs [dev path]
+```
+
+View disk usage
+-s : summarize
+--max-depth=[#] : limit directory depth
+-a : show files in the output in addition to directories
+-h : human readable sizes
+```bash
+du -h [optional directory path]
+```
+
+Ncurses interactive disk usage
+```bash
+ncdu
 ```
 
 # Volumes
