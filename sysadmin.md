@@ -387,6 +387,22 @@ create bridge
 nmcli con add type bridge con-name [ BRIDGE_PROFILE ] ifname [ BRIDGE_NAME ]
 ```
 
+### Wireless
+check if wifi is active
+```bash
+nmcli radio wifi
+```
+
+view wifi list
+```bash
+nmcli dev wifi list
+```
+
+connect to wifi network
+```bash
+nmcli --ask dev wifi connect [network-ssid]
+```
+
 ### Other Settings
 
 Disable auto-added routes in NetworkManager.  
