@@ -99,7 +99,8 @@ https://markdown-here.com/img/icon256.png
 def hello_world():
     print("Hello, world!")
 ```
-```
+--
+```bash
 ```python
 def hello_world():
     print("Hello, world!")
