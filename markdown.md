@@ -81,16 +81,30 @@ https://markdown-here.com/img/icon256.png
 | ----------- | ----------- |
 | Header      | Title       |
 | Paragraph   | Text        |
+```
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+```
 
 ### Code
 #### Inline Code
 `code`
+```
+`code`
+```
 #### Fenced Code Blocks for syntax highlighting
 ```python
 def hello_world():
     print("Hello, world!")
 ```
-
+```
+```python
+def hello_world():
+    print("Hello, world!")
+```
+```
 
 
 ### Horisontal Rule
