@@ -3,17 +3,23 @@
 ## Basic Syntax
 
 ### Headings
+```
 # Heading 1
 ## Heading 2
 ### Heading 3
+```
 
 ### Bold and Italics
 **This text is bold**
+```**This text is bold**```
 *This text is italicized*
+```*This text is italicized*```
 **_This text is both bold and italicized_**
+```**_This text is both bold and italicized_**```
 
 ### Blockquotes
 > This is a blockquote.
+```> This is a blockquote.```
 
 ### Lists
 #### Unordered List
@@ -21,17 +27,34 @@
 - Item 2
   - Subitem 1
   - Subitem 2
-
+```
+- Item 1
+- Item 2
+  - Subitem 1
+  - Subitem 2
+```
 #### Ordered List
+
 1. First item
 2. Second item
    1. Subitem 1
    2. Subitem 2
 
+```
+1. First item
+2. Second item
+   1. Subitem 1
+   2. Subitem 2
+```
+
 ### Task List
 - [x] Write the press release
 - [ ] Update the website
 - [ ] Contact the media
+
+>```- [x] Write the press release```
+>```- [ ] Update the website```
+>```- [ ] Contact the media```
 
 ### Footnote
 To insert the footnote in your text, the syntax is [^1] or [^footnote1]. The ^ character followed by an identifier inside brackets [] will create the footnote reference.
@@ -43,7 +66,7 @@ Footnote definition at placed at bottom of document
 [^1]: footnote info to be associated with footnote
 
 ### Strikethrough
-~This text is struck through.~~
+~~This text is struck through.~~
 
 ### Links
 https://github.com

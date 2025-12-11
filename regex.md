@@ -2,6 +2,8 @@
 ```bash
 ^			beginning of line
 $			end of line
+^$			blank line
+''			single quotes to parse regex
 grep -c			count
 esc+.			last file typed
 (x|x)			group and or operator - requires -E
@@ -32,6 +34,13 @@ file.sed		contains expressions; ex. sed -f file.sed file
 sed -f test.sed -i.ba	create backup before editing
 ssh flags		-C execute commands -n redirect stdin to /dev/null allowing remote execution on multiple servers
 -i.bak			create backup of file when in place edit
+t			test - if previous line in .sed file suceeded ex. ssh_client_alive.sed
+p			print the patter space
+//			delimited regex
+a			append
+i			insert before matched line
+i.bak			will create a backup file
+d			deletes the line that matches
 ```
 
 # AWK
@@ -68,11 +77,29 @@ ex. 			awk 'BEGIN {FS=":"; printf "%4s%20s%6s\n", "Num:", "username", "UID"; COU
 ```
 
 # STRINGS AND REGEX CHARACTERS
+## Anchors
 ```bash
 ^			beginning of line
 $			end of line
+```
+## Ranges
+```bash
 (x|x)			or
+[]			ranges
+[^]			^ inside range negates following character
+```
+## Boundaries
+```bash
 \s			any whitespace
-*			zero or more
-t			test - if previous line in .sed file suceeded ex. ssh_client_alive.sed
+\b			word boundry, space; hyphen
+\S or \B 		Capitol reverses the meaning
+```
+## Quantifiers
+```bash
+?			0 or 1 of the previous character
+*			zero or more of the previous character
++			one or more of the previous character
+{3}			matched exactly the number inside braces of the previous character
+{1,2}			1 or 2 of the previous character
+.			single character
 ```

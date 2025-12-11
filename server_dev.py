@@ -391,7 +391,7 @@ class MarkdownHandler(SimpleHTTPRequestHandler):
         """
 
 def start_server():
-    port = 8000
+    port = 8008
     print(f"Starting server on http://localhost:{port}")
     httpd = HTTPServer(("0.0.0.0", port), MarkdownHandler)
     httpd.serve_forever()

@@ -20,3 +20,83 @@ KeyboardInterrupt
 192.168.1.204 - - [05/Dec/2025 06:49:19] "GET /sysadmin.md HTTP/1.1" 200 -
 192.168.1.204 - - [05/Dec/2025 06:49:20] code 404, message File not found
 192.168.1.204 - - [05/Dec/2025 06:49:20] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [05/Dec/2025 19:32:17] "GET / HTTP/1.1" 200 -
+192.168.1.204 - - [05/Dec/2025 19:32:17] code 404, message File not found
+192.168.1.204 - - [05/Dec/2025 19:32:17] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [05/Dec/2025 19:32:26] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [05/Dec/2025 19:33:45] code 404, message File not found
+192.168.1.204 - - [05/Dec/2025 19:33:45] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [05/Dec/2025 22:06:21] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 06:38:44] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 06:43:39] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 06:43:44] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 06:44:43] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 06:45:05] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:02:00] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:02:05] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:54:17] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:58:34] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:58:39] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 07:58:44] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [06/Dec/2025 08:00:27] "GET /k8s.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 06:08:19] "GET /bashscripts.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 06:08:25] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 06:10:00] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 06:12:16] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 06:12:33] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:03:28] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:03:53] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:03:55] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:04:58] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:06:55] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:44] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:47] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:48] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:55] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:56] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:56] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:07:57] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:09] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:10] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:11] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:11] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:43] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:44] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:45] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:45] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:48] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:49] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:08:49] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:09:17] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:09:28] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:10:02] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:10:29] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:10:56] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 19:11:55] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 20:35:34] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 20:35:37] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 20:35:38] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 21:13:19] "GET /webmaster.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 21:35:04] "GET /webmaster.md HTTP/1.1" 200 -
+192.168.1.204 - - [10/Dec/2025 21:35:04] code 404, message File not found
+192.168.1.204 - - [10/Dec/2025 21:35:04] "GET /favicon.ico HTTP/1.1" 404 -
+Starting server on http://localhost:8000
+Request: GET /webmaster.md from 192.168.1.204:60313
+Resolved path: 'webmaster.md' -> '/home/shoestring/cheatnotes/webmaster.md', exists=True
+Request: GET /favicon.ico from 192.168.1.204:60314
+Traceback (most recent call last):
+  File "/home/shoestring/cheatnotes/server.py", line 401, in <module>
+    start_server()
+  File "/home/shoestring/cheatnotes/server.py", line 397, in start_server
+    httpd.serve_forever()
+  File "/usr/lib64/python3.9/socketserver.py", line 232, in serve_forever
+    ready = selector.select(poll_interval)
+  File "/usr/lib64/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+192.168.1.204 - - [10/Dec/2025 21:36:02] "GET /webmaster.md HTTP/1.1" 200 -
+192.168.1.204 - - [11/Dec/2025 04:54:12] "GET /webmaster.md HTTP/1.1" 200 -
+192.168.1.204 - - [11/Dec/2025 04:54:22] "GET /wordpress.md HTTP/1.1" 200 -
+192.168.1.204 - - [11/Dec/2025 04:54:24] "GET /webmaster.md HTTP/1.1" 200 -
+192.168.1.204 - - [11/Dec/2025 04:54:48] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [11/Dec/2025 05:02:59] "GET /sysadmin.md HTTP/1.1" 200 -

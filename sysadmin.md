@@ -571,7 +571,7 @@ Ncurses interactive disk usage
 ncdu
 ```
 
-# Volumes
+# Volumes and Images
 ## LVM
 Display information about a physical volume.  
 ```bash
@@ -627,7 +627,34 @@ credentials can be put on cli
 ```bash
 user=[user],pass=[pass]
 ```
-
+mount image to next free loop device, may require additional tools
+```bash
+mount -o loop [/path/to/image] [/mount/point]
+```
+## Loop devices
+view loop devices
+-f : Find the first unused loop device and print its name
+-f --show : Same as -f but also creates the association with a given file and prints the device name
+-P : After attaching a file, scan it for partitions and create loop devices for each partition
+-r : Attach the file read‑only
+-o [OFFSET] : Set a byte offset inside the file where the loop device should start
+-d [LOOP_DEVICE] : Detach (delete) the specified loop device.
+-a : Show all loop devices, even those without a backing file.
+-j [FILE] : Find the loop device(s) that are using a particular file.
+```
+losetup -f
+losetup -f --show [IMAGE]
+losetup -fP [IMAGE]
+losetup -r [/dev/loopX] [IMAGE]
+losetup -f -o [1048576] [IMAGE]
+losetup -d [/dev/loopX]
+losetup -a
+losetup -j [IMAGE]
+```
+mount specific partition after using `losetup`
+```bash
+mount [/dev/loopXpX [/mnt/point]
+```
 # tar
 Create an archive, excluding a subpath and changing directory before adding content.  
 ```bash
@@ -658,4 +685,27 @@ rsync -av[P | --info=progress2 --partial ] [source] [destination - local or ssh 
 openvswitch package
 ```bash
 subscription-manager repos --enable=fast-datapath-for-rhel-9-x86_64-rpms
+```
+search installed packages
+```bash
+rpm -qa | grep [package]
+```
+## Arch
+find package with specific command
+```bash
+pacman -F [command]
+```
+
+# other useful commands
+recognize text in an image
+```bash
+tesseract
+```
+repeat yes - useful when autoconfirm is not an option
+```bash
+yes
+```
+redirect to grep-able output
+```bash
+2>&1
 ```
