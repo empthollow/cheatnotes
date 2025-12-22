@@ -133,3 +133,37 @@ KeyboardInterrupt
 192.168.1.189 - - [11/Dec/2025 16:19:56] "GET /podman.md HTTP/1.1" 200 -
 192.168.1.189 - - [11/Dec/2025 16:19:59] "GET /wordpress.md HTTP/1.1" 200 -
 192.168.1.165 - - [12/Dec/2025 14:53:19] "GET /sysadmin.md HTTP/1.1" 200 -
+192.168.1.204 - - [14/Dec/2025 14:56:12] "GET /sql.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 07:53:20] "GET /git.md HTTP/1.1" 200 -
+Starting server on http://localhost:8000
+Request: GET /git.md from 192.168.1.204:57119
+Resolved path: 'git.md' -> '/home/shoestring/cheatnotes/git.md', exists=True
+Traceback (most recent call last):
+  File "/home/shoestring/cheatnotes/server.py", line 492, in <module>
+    start_server()
+  File "/home/shoestring/cheatnotes/server.py", line 487, in start_server
+    httpd.serve_forever()
+  File "/usr/lib64/python3.9/socketserver.py", line 232, in serve_forever
+    ready = selector.select(poll_interval)
+  File "/usr/lib64/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+192.168.1.204 - - [22/Dec/2025 07:54:19] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 07:54:20] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 07:59:25] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:00:37] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:00:50] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:00:57] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:01:25] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:01:31] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:01:32] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:01:45] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:02:14] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:02:28] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:02:57] "GET /markdown.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:03:00] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:03:19] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:03:32] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:03:44] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:04:51] "GET /git.md HTTP/1.1" 200 -
+192.168.1.204 - - [22/Dec/2025 08:20:07] "GET /openstack.md HTTP/1.1" 200 -

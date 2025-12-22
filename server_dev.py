@@ -279,16 +279,37 @@ class MarkdownHandler(SimpleHTTPRequestHandler):
                     font-family: sans-serif;
                     background: #0b0b0f;
                     color: #e8e8e8;
-                    padding: 1em;
-                    max-width: 1200px;
-                    margin: auto;
+                    padding: 0;
+                    margin: 0;
                 }}
                 a {{ color: #89b4ff; }}
+                .header {{
+                    position: sticky;
+                    top: 0;
+                    background: #0b0b0f;
+                    z-index: 100;
+                    padding-top: 1em;
+                    padding-bottom: 1em;
+                    padding-left: 5em;
+                    padding-right: 5em;
+                    border-bottom: 1px solid #333;
+                }}
+                .header h1 {{
+                    margin: 0 0 0.5em 0;
+                }}
+                .header h2 {{
+                    text-align: center;
+                    margin: 0.5em 0 0 0;
+                }}
                 .button-container {{
                     display: flex;
                     flex-wrap: wrap;
                     gap: 0.5em;
-                    margin-bottom: 1em;
+                }}
+                #content {{
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 1em;
                 }}
                 button {{
                     padding: 0.5em 1em;
@@ -423,12 +444,16 @@ class MarkdownHandler(SimpleHTTPRequestHandler):
             </script>
         </head>
         <body>
-            <h1>Markdown Viewer</h1>
-            <div class="button-container">
-                {file_buttons}
+            <div class="header">
+                <h1>Markdown Viewer</h1>
+                <div class="button-container">
+                    {file_buttons}
+                </div>
+                <h2>{file_name}</h2>
             </div>
-            <h2>{file_name}</h2>
-            <div id="output">{html_content}</div>
+            <div id="content">
+                <div id="output">{html_content}</div>
+            </div>
         </body>
         </html>
         """

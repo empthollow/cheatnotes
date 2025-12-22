@@ -12,7 +12,10 @@ openstack server create ... --config-drive=true *looks like a cdrom to the VM
 openstack server show SERVER
 openstack server stop SERVER
 openstack server start SERVER
-openstack server delete SERVER *deletes disk
+```
+also deletes disk
+```bash
+openstack server delete SERVER 
 openstack server add security group SERVER SECGROUP
 openstack server remove security group SERVER SECGROUP
 openstack flavor list
@@ -20,14 +23,23 @@ openstack server add floating ip SERVER_IP
 openstack server remove floating ip SERVER_IP
 openstack console url show SERVER
 openstack console log show SERVER
-curl http://192.168.1.61/compute/v2.1/servers -H "x-auth-token: $T" | python3 -m json.tool # query nova via api
+```
+query nova via api
+```bash
+curl http://192.168.1.61/compute/v2.1/servers -H "x-auth-token: $T" | python3 -m json.tool 
 ```
 
 # Security Groups
 ```bash
 openstack security group create NAME
 openstack security group rule create --dst-port XX --protocol tcp NAME
-openstack security group list --fit-width -f yaml --long # foramt yaml may be easier to read *long shows direction
+```
+yaml format may be easier to read 
+```bash
+openstack security group list --fit-width -f yaml --long 
+```
+long shows direction
+```bash
 openstack security group rule list NAME --long
 ```
 
@@ -51,15 +63,23 @@ openstack keypair list
 ```bash
 openstack network list
 openstack network create NETWORK
-openstack network create --external --provider-physical-network [provider <defined in ml2_conf.ini> ]  --provider-network-type flat [new nework name]  # create external network
 openstack network set --name OLD NEW
 ```
-
-# Subnets; DNS Is Configured on Subnets
+## Subnets 
+*DNS Is Configured on Subnets*
+host route is like a static route
 ```bash
-openstack subnet set SUBNET --dns-nameserver=[IP address] --host-route destination=[subnet CIDR],gateway=[IP] # --host-route is like a static route
+openstack subnet set SUBNET --dns-nameserver=[IP address] --host-route destination=[subnet CIDR],gateway=[IP] 
 openstack subnet create NETWORK-subnet --network NETWORK --subnet range x.x.x.x 
-openstack subnet create --network [external network name]  --subnet-range 203.0.113.0/24 --gateway [physical router IP]  --allocation-pool start=[ipv4 least start],end=[ipv4 lease end] --dns-nameserver 8.8.8.8 public-subnet # for external network, for flat, openstack subnet must match physical iface subnet
+```
+## External networks
+*for external network, for flat, openstack subnet must match physical iface subnet*
+create network
+```bash
+openstack network create --external --provider-network-type flat --provider-physical-network [phy_nic] [net_name]
+```
+```bash
+openstack subnet create --network [external network name]  --subnet-range 203.0.113.0/24 --gateway [physical router IP]  --allocation-pool start=[ipv4 least start],end=[ipv4 lease end] --dns-nameserver 8.8.8.8 [public-subnet-name]
 ```
 
 # Routers
@@ -86,10 +106,17 @@ openstack keypair create KEY_NAME > MY_KEY.pem
 ```
 
 # Create / Manage Projects, Users, Roles; User Must Have Project to Log In
+list all roles in openstack
 ```bash
-openstack role list # list all roles in openstack
-openstack role assignment list --user [user_name] --project [project_name] --names # roles assigned to user
-openstack role assignment list --project [project_name] --names # list users & roles in a project
+openstack role list 
+```
+roles assigned to user
+```bash
+openstack role assignment list --user [user_name] --project [project_name] --names 
+```
+list users & roles in a project
+```bash
+openstack role assignment list --project [project_name] --names 
 openstack project create --domain [dom name] --description "[description]" [project name]
 openstack role add --project [project name] --user [username] [role]
 ```
@@ -98,11 +125,17 @@ openstack role add --project [project name] --user [username] [role]
 ```bash
 openstack image create --disk-format qcow2 --container-format bare --public --file ./centos63.qcow2 centos63-image
 openstack image list
-openstack image show <image_id> -f json # check if image is accessible and available; json optional
-openstack image save --file test_image.img <image_id> # download
+```
+check if image is accessible and available; json optional
+```bash
+openstack image show <image_id> -f json 
+```
+download
+```bash
+openstack image save --file test_image.img <image_id>
 ```
 
-# Network Management
+# Neutron & Network Management
 ```bash
 openstack network agent list
 openstack network service provider list
