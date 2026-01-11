@@ -60,6 +60,7 @@ openstack keypair list
 ```
 
 # Networks
+common network operations
 ```bash
 openstack network list
 openstack network create NETWORK
@@ -67,31 +68,58 @@ openstack network set --name OLD NEW
 ```
 ## Subnets 
 *DNS Is Configured on Subnets*
-host route is like a static route
+*host route is like a static route and not necessary for simple configurations*
+create subnet
 ```bash
-openstack subnet set SUBNET --dns-nameserver=[IP address] --host-route destination=[subnet CIDR],gateway=[IP] 
-openstack subnet create NETWORK-subnet --network NETWORK --subnet range x.x.x.x 
+openstack subnet create stardust-subnet \
+  --network [network-name] \
+  --subnet-range [10.10.1.0/24] \
+  --dns-nameserver [8.8.8.8] \
+  --host-route destination=192.168.50.0/24,gateway=10.10.1.254
 ```
 ## External networks
 *for external network, for flat, openstack subnet must match physical iface subnet*
 create network
 ```bash
-openstack network create --external --provider-network-type flat --provider-physical-network [phy_nic] [net_name]
+openstack network create \
+--external \
+--provider-network-type [flat] \
+--provider-physical-network [mapped_provider_ml2_conf.ini] [network_name]
 ```
+Create external subnet
 ```bash
-openstack subnet create --network [external network name]  --subnet-range 203.0.113.0/24 --gateway [physical router IP]  --allocation-pool start=[ipv4 least start],end=[ipv4 lease end] --dns-nameserver 8.8.8.8 [public-subnet-name]
+openstack subnet create \
+--network [external network name]  \
+--subnet-range [203.0.113.0/24] \
+--gateway [physical router IP]  \
+--allocation-pool start=[ipv4 least start],end=[ipv4 lease end] \
+--dns-nameserver [8.8.8.8] [public-subnet-name]
 ```
 
 # Routers
 ```bash
 openstack router create ROUTER
 openstack router add subnet ROUTER SUBNET
-openstack router set [router name] --external-gateway [external network name]
 openstack router create ROUTER
 openstack router add subnet ROUTER SUBNET
 openstack router add subnet ROUTER SUBNET2
 openstack router add port PORT_NAME ROUTER
 openstack port create PORT_NAME --network NETWORK
+```
+## external routers
+*external routers should be created as admin*
+*project subnets will need to be attached as admin*
+*the router will automatically get and IP and be treaded as static*
+additional options common when using two external networks
+
+- `--disable-snat` : Traffic leaving the router will keep the internal private IP of the VM.
+- `--fixed-ip` : manually set ip
+- `--enable-default-route-ecmp` : Equal-Cost Multi-Path, enables load balancing
+- `--enable-default-route-bfd` : Bidirectional Forwarding Detection, high-speed "heartbeat" check
+
+after creating router set the external gateway
+```bash
+openstack router set [router name] --external-gateway [external network name]
 ```
 
 # Check for Endpoints

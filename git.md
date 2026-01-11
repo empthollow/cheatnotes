@@ -23,6 +23,10 @@ Set editor for edit commands
 ```bash
 git config --global core.editor vim
 ```
+Set git ssh key
+```bash
+git config --global core.sshCommand "ssh -i ~/.ssh/id_rsa"
+```
 Edit global config
 ```bash
 git config --global --edit

@@ -191,6 +191,26 @@ Set the file type for syntax highlighting.
 :set filetype=[type]
 ```
 
+Set the language for syntax highlighting
+```bash
+:set syntax=[lang]
+```
+
+Set fallback syntax in .vimrc
+```bash
+" Detect when no filetype was set
+augroup BashFallback
+  autocmd!
+  " After Vim finishes trying to detect a filetype,
+  " check if &filetype is still empty and set it to bash
+  autocmd BufReadPost,BufNewFile *
+        \ if &filetype == '' |
+        \   setfiletype sh |
+        \   set syntax=sh |
+        \ endif
+augroup END
+```
+
 Show hidden characters like line endings.  
 ```bash
 :set list
@@ -437,6 +457,63 @@ nmcli con add con-name brovs type ovs-bridge ifname bridge-ovs
 nmcli con add con-name ovs-port type ovs-port ifname ovs-port master brovs
 nmcli con add con-name ovs-dev type ethernet ifname eno4 master ovs-port
 nmcli con mod brovs ipv4.method manual ipv4.addresses 172.22.1.2/24 ipv4.gateway 172.22.1.1 ipv4.dns 192.168.1.50
+```
+
+## NFS
+### Server 
+`no_root_squash` : treats client root user as non-root user
+`all_squash` : maps all client requests to a single anonymous user
+`anonuid/anongid` : map the incoming requests to the specific UID/GID
+`sync` : Synchronous, slower for writes but prevents data corruption if the server crashes
+`no_subtree_check` : Disabling this speeds up performance and prevents "stale file handle" errors when files are renamed
+`rw/ro` : read write / read only
+`root_squash` : Only maps the client's root user to the anonymous user. Other users keep their UIDs
+`secure` : Default, Requires that requests originate from an IP port less than 1024 (privileged ports)
+`wdelay` : Default Write Delay, improves disk efficiency
+`hide` : Default, If you export a parent directory, NFS won't automatically show sub-filesystems mounted within it unless specifically requested
+
+```bash
+# /etc/exports
+/path/to/share [ ALLOWED_IP | * ](ro,sync,all_squash,anonuid=X,anongid=X,no_subtree_check)
+```
+export shares
+`-a` : export updates
+`-r` : re-export all
+```bash
+exportfs -a
+```
+view exported shares
+```bash
+exportfs -v
+```
+show shares mounted by clients
+```bash
+showmount -a
+```
+open firewall port if active
+```bash
+firewall-cmd --add-port 2049/tcp --permanant
+firewall-cmd --reload
+```
+tell selinux to allow - read only example
+```bash
+setsebool -P nfs_export_all_ro 1
+```
+NOTE: shared dir must have x permissions
+```bash
+namei -l /var/lib/libvirt/images/vanilla
+f: /var/lib/libvirt/images/vanilla
+drwxrwxr-x qemu qemu vanilla
+```
+### Client
+use mount command
+```bash
+mount [192.168.1.10]:/mnt/nfs_share /mnt/shared_data
+```
+use `/etc/fstab` for persistenct
+`_netdev` : waits for network before trying to mount
+```bash
+[192.168.1.10]:/mnt/nfs_share  /mnt/shared_data  nfs  defaults,user,_netdev  0  0
 ```
 
 # flatpak
