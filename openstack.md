@@ -1,28 +1,54 @@
 # Server Management
+ *for managing instances
 ```bash
-openstack help server *for managing instances
+openstack help server
 openstack help server create *help for all commands
 openstack server IMAGE create SERVER --name IMAGE_NAME
-openstack server create ... --key-name NAME
-openstack server create --image cirros --flavor 1 --network private myinstance
-openstack server create --property db=10.100.100.6 *key value pair *can be used multiple times
-openstack server create	--user-data install.sh *execute a script
-openstack server create --user-data FILE *cloud-config file
-openstack server create ... --config-drive=true *looks like a cdrom to the VM
+```
+Typical create vm command
+```bash
+openstack server create \
+  --flavor m1.small \
+  --image cirros62 \
+  --key-name KEY_NAME \
+  --security-group GROUP_NAME \
+  --network NETWORK_NAME \
+  VM_NAME
+```
+add a property
+**key -  value pairs can be used multiple times**
+```bash
+openstack server create --property db=10.100.100.6
+```
+execute a script or cloud config file upon server creation
+```bash
+openstack server create	--user-data [ SCRIPT.sh | CLOUD_CONFIG.yaml ]
+```
+add a cd-rom drive
+```bash
+openstack server create --config-drive=true
+```
+server / vm control commands
+```bash
 openstack server show SERVER
 openstack server stop SERVER
 openstack server start SERVER
+openstack server delete SERVER 
+openstack console url show SERVER
+openstack console log show SERVER
 ```
 also deletes disk
 ```bash
-openstack server delete SERVER 
+modify server commands
+```bash
 openstack server add security group SERVER SECGROUP
 openstack server remove security group SERVER SECGROUP
-openstack flavor list
 openstack server add floating ip SERVER_IP
 openstack server remove floating ip SERVER_IP
-openstack console url show SERVER
-openstack console log show SERVER
+```
+list vm flavors
+```bash
+openstack flavor list
 ```
 query nova via api
 ```bash
