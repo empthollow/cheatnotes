@@ -2,6 +2,7 @@ import os
 import subprocess
 import sys
 import re
+import socket
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import unquote
 
@@ -481,8 +482,9 @@ class MarkdownHandler(SimpleHTTPRequestHandler):
 
 
 def start_server():
-    port = 8000
-    print(f"Starting server on http://localhost:{port}")
+    port = 8600
+    hostname = socket.gethostname()
+    print(f"Starting server on http://{hostname}:{port}")
     httpd = HTTPServer(("0.0.0.0", port), MarkdownHandler)
     httpd.serve_forever()
 

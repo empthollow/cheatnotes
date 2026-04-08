@@ -220,14 +220,25 @@ Hide line endings.
 ```bash
 :set nolist
 ```
-
-# journalctl
-Show the last 10 entries from the system journal.  
+# systemd
+Create an overlay file for a unit
 ```bash
-journalctl -n
+systemctl edit [unit]
 ```
 
-Show the last 15 entries from the system journal.  
+# timers
+
+Show all timers, includes information like next / last run
+```bash
+systemctl list-timers --all
+```
+Provides more detailed information about each timer, including next eligible triggers
+```bash
+systemctl list-timers --all --with-triggers
+```
+## journalctl
+Show the last X entries from the system journal
+Defalut with no argument is 10  
 ```bash
 journalctl -n [15]
 ```
@@ -235,6 +246,11 @@ journalctl -n [15]
 Follow the log file in real-time.  
 ```bash
 journalctl -f
+```
+
+Wrap output  
+```bash
+journalctl --no-pager
 ```
 
 Show logs for a specific systemd unit.  

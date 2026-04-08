@@ -14,9 +14,11 @@ start() {
         fi
     fi
     echo "Starting server..."
-    nohup python3 server.py > /dev/null 2>&1 &
+    nohup python3 server.py > server.log 2>&1 &
     echo $! > "$PID_FILE"
     echo "Server started (PID: $(cat $PID_FILE))"
+    sleep 1
+    head -20 server.log
 }
 
 stop() {

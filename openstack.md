@@ -1,11 +1,41 @@
-# Server Management
- *for managing instances
+# Help
+Help for all commands
 ```bash
-openstack help server
-openstack help server create *help for all commands
-openstack server IMAGE create SERVER --name IMAGE_NAME
+openstack help [command]
+openstack help [server create] 
 ```
-Typical create vm command
+Universal view commands
+- These will be shown in sections but know they can be used with nearly all assets
+```bash
+# view list of assets
+openstack SERVICE list
+# show details about asset
+openstack SERIVCE show
+```
+For many commands there are flags to format output
+```bash
+# if experiencing problems viewing in window
+--fit-width 
+# view in different format choose from 'csv', 'json', 'table', 'value', 'yaml'
+## value can will show only the field value which can be useful for copy or scripting
+-f [yaml | json | value] 
+# View additional info not default in table
+--long 
+# show a column or columns
+## also works for values in 'openstack server show SERVER_NAME'
+-c FIELD_NAME
+```
+# Nova
+## Server creation and management
+Create server / VM
+```bash
+openstack server create --name [image_name or ID] SERVER_NAME 
+```
+Create with a cd-rom drive
+```bash
+openstack server create --config-drive=true
+```
+Typical create VM command
 ```bash
 openstack server create \
   --flavor m1.small \
@@ -15,104 +45,161 @@ openstack server create \
   --network NETWORK_NAME \
   VM_NAME
 ```
-add a property
-**key -  value pairs can be used multiple times**
+Specify user data file
+- Will execute a script or cloud config file upon server creation
 ```bash
-openstack server create --property db=10.100.100.6
+openstack server create	--user-data [ SCRIPT.sh | CLOUD_CONFIG.yaml ] SERVER_NAME
 ```
-execute a script or cloud config file upon server creation
+Modify server command examples
 ```bash
-openstack server create	--user-data [ SCRIPT.sh | CLOUD_CONFIG.yaml ]
+openstack server add security group SERVER_NAME SECGROUP
+openstack server remove security group SERVER_NAME SECGROUP
+openstack server add floating ip SERVER_NAME FLOATING_IP
+openstack server remove floating ip SERVER_NAME FLOATING_IP
 ```
-add a cd-rom drive
+Show url to access server shell console
 ```bash
-openstack server create --config-drive=true
+openstack console url show SERVER_NAME
 ```
-server / vm control commands
+Show logs such as when booting
 ```bash
-openstack server show SERVER
-openstack server stop SERVER
-openstack server start SERVER
-openstack server delete SERVER 
-openstack console url show SERVER
-openstack console log show SERVER
+openstack console log show SERVER_NAME
 ```
-also deletes disk
+Display server information and status
 ```bash
-modify server commands
-```bash
-openstack server add security group SERVER SECGROUP
-openstack server remove security group SERVER SECGROUP
-openstack server add floating ip SERVER_IP
-openstack server remove floating ip SERVER_IP
+openstack server show SERVER_NAME
 ```
-list vm flavors
+Server / VM control commands
+```bash
+openstack server stop SERVER_NAME
+openstack server start SERVER_NAME
+openstack server delete SERVER_NAME 
+```
+Resize a VM
+```bash
+openstack resize --flavor [ m1.large ] SERVER_NAME
+```
+Resize needs to be confirmed or reverted
+```bash
+openstack server resize confirm SERVER_NAME
+openstack server resize revert SERVER_NAME
+```
+## VM flavors
+Create VM flavor example
+```bash
+openstack flavor create [ --ram 512 --disk 5 --vcpus 1 --public m1.tiny ]
+```
+List VM flavors
 ```bash
 openstack flavor list
 ```
-query nova via api
+## SSH Key Pairs
+Create a keypair
 ```bash
-curl http://192.168.1.61/compute/v2.1/servers -H "x-auth-token: $T" | python3 -m json.tool 
-```
-
-# Security Groups
-```bash
-openstack security group create NAME
-openstack security group rule create --dst-port XX --protocol tcp NAME
-```
-yaml format may be easier to read 
-```bash
-openstack security group list --fit-width -f yaml --long 
-```
-long shows direction
-```bash
-openstack security group rule list NAME --long
-```
-
-# Floating IP
-```bash
-openstack floating ip list
-openstack floating ip create EXT_NET
-openstack floating ip delete IP_ADDR
-```
-
-# SSH Key Pairs
-```bash
-openstack keypair create NAME >key.pem
+openstack keypair create KEY_NAME > KEY.pem
 chmod 600 key.pem
-openstack keypair create --public-key key.pub *add existing pub key
-openstack keypair show --public-key NAME
-openstack keypair list
 ```
-
-# Networks
-common network operations
+Add own key
+```bash
+openstack keypair create --public-key KEY.pub 
+```
+View keys
+```bash
+openstack keypair list
+openstack keypair show KEY_NAME
+openstack keypair show --public-key KEY_NAME
+```
+## Nova management
+List parts of nova 
+- Requires admin
+```bash
+openstack compute service list 
+nova compute service list --service [nova-compute or other]
+```
+View hypervisor nodes
+```bash
+openstack hypervisor list 
+```
+Show details on specific hypervisor
+```bash
+openstack hypervisor show [identifier]
+```
+Show total usage
+```bash
+openstack usage list
+```
+Show project quotas
+```bash
+openstack quota show
+```
+Set quotas
+```bash
+openstack quote set [flag] XX PROJECT_NAME
+```
+Quota flags
+```bash
+--backup-gigabytes      --injected-file-size    --routers
+--backups               --injected-path-size    --secgroup-rules
+--check-limit           --instances             --secgroups
+--class                 --key-pairs             --server-group-members
+--cores                 --networks              --server-groups
+--fixed-ips             --no-force              --snapshots
+--floating-ips          --per-volume-gigabytes  --subnetpools
+--force                 --ports                 --subnets
+--gigabytes             --properties            --volumes
+--help                  --ram                   --volume-type
+--injected-files        --rbac-policies
+```
+# Neutron / Networking
+## Network Management
+List networks
 ```bash
 openstack network list
-openstack network create NETWORK
-openstack network set --name OLD NEW
 ```
-## Subnets 
-*DNS Is Configured on Subnets*
-*host route is like a static route and not necessary for simple configurations*
-create subnet
+View details on a specific network
 ```bash
-openstack subnet create stardust-subnet \
-  --network [network-name] \
-  --subnet-range [10.10.1.0/24] \
-  --dns-nameserver [8.8.8.8] \
-  --host-route destination=192.168.50.0/24,gateway=10.10.1.254
+openstack network show NETWORK_NAME
 ```
-## External networks
-*for external network, for flat, openstack subnet must match physical iface subnet*
-create network
+View network agents and health
+```bash
+openstack network agent list
+```
+View provider (external) network details
+```bash
+openstack network service provider list
+```
+## Network creation
+Create a network
+```bash
+openstack network create NETWORK_NAME
+```
+Create external (to openstack) network
+Often named provider or public
 ```bash
 openstack network create \
 --external \
 --provider-network-type [flat] \
---provider-physical-network [mapped_provider_ml2_conf.ini] [network_name]
+--provider-physical-network NETWORK_NAME_DEFINED_IN_NEUTRON_CONFIG
+```
+Rename a network
+```bash
+openstack network set --name OLD NEW
+```
+## Subnets 
+Create subnet
+- Host route is like a static route and not necessary for simple configurations
+- DNS is configured on Subnets
+- Typically subnet is NETWORK_NAME-subnet
+```bash
+openstack subnet create NETWORK_NAME-subnet \
+  --network NETWORK_NAME \
+  --subnet-range [10.10.1.0/24] \
+  --dns-nameserver [8.8.8.8] \
+  --host-route destination=192.168.50.0/24,gateway=10.10.1.254
 ```
 Create external subnet
+- For external network, for flat, openstack subnet must match physical iface subnet
+  - May be a smaller mask within the physical interface subnet
 ```bash
 openstack subnet create \
 --network [external network name]  \
@@ -121,125 +208,176 @@ openstack subnet create \
 --allocation-pool start=[ipv4 least start],end=[ipv4 lease end] \
 --dns-nameserver [8.8.8.8] [public-subnet-name]
 ```
-
 # Routers
+Create router and add subnet(s)
+- Multiple subnets can be added
+- A port may be automatically added
+  - A port is sometimes required to be manually added and subnet IP assigned
+    - This is typically the 2nd port on a subnet
 ```bash
-openstack router create ROUTER
-openstack router add subnet ROUTER SUBNET
-openstack router create ROUTER
-openstack router add subnet ROUTER SUBNET
-openstack router add subnet ROUTER SUBNET2
-openstack router add port PORT_NAME ROUTER
-openstack port create PORT_NAME --network NETWORK
+openstack router create ROUTER_NAME
+openstack router add subnet ROUTER_NAME SUBNET_NAME
+openstack router add port PORT_NAME ROUTER_NAME
 ```
-## external routers
-*external routers should be created as admin*
-*project subnets will need to be attached as admin*
-*the router will automatically get and IP and be treaded as static*
-additional options common when using two external networks
-
-- `--disable-snat` : Traffic leaving the router will keep the internal private IP of the VM.
-- `--fixed-ip` : manually set ip
-- `--enable-default-route-ecmp` : Equal-Cost Multi-Path, enables load balancing
-- `--enable-default-route-bfd` : Bidirectional Forwarding Detection, high-speed "heartbeat" check
-
-after creating router set the external gateway
+Create a port
 ```bash
-openstack router set [router name] --external-gateway [external network name]
+openstack port create PORT_NAME --network NETWORK_NAME
 ```
-
-# Check for Endpoints
+Create external router
+- External routers created as admin can be used across all projects
+  - Project subnets will need to be attached by admin
+  - The router will automatically get and IP and be treaded as static
+- Router should be created and then do the following to set it up as external
 ```bash
-openstack endpoint list
-openstack endpoint list --service [service ex. identity]
+openstack router set ROUTER_NAME --external-gateway EXTERNAL_NETWORK_NAME
 ```
-
-# Key Pair
+Additional options common when using two external networks
 ```bash
-openstack keypair create KEY_NAME > MY_KEY.pem
+# Traffic leaving the router will keep the internal private IP of the VM
+--disable-snat 
+# Manually set IP
+--fixed-ip
+# Equal-Cost Multi-Path, enables load balancing
+--enable-default-route-ecmp 
+# Bidirectional Forwarding Detection, high-speed "heartbeat" check
+--enable-default-route-bfd
+```
+# Floating IP
+Management commands
+- Self explanitory
+```bash
+openstack floating ip create EXTERNAL_NETWORK_NAME
+openstack floating ip delete IP_ADDR
+openstack floating ip list
+```
+## Security Groups
+Create security group
+- Group must be created and rule added as a second operation
+```bash
+openstack security group create NAME
+openstack security group rule create --dst-port XX --protocol NAME
 ```
 
-# Create / Manage Projects, Users, Roles; User Must Have Project to Log In
-list all roles in openstack
+```bash
+openstack security group list 
+```
+long shows direction
+```bash
+openstack security group rule list NAME --long
+```
+## OpenVSwitch
+### Configuration and create commands
+- A minimal manual setup is required for neutron-ovs-agent to properly interact
+Minimal Setup
+```bash
+Bridge br-ex - [ip_address]
+    Port [for_eth1]
+        Interface [eth1]
+Bridge br-int
+```
+Create bridges
+```bash
+ovs-vsctl --may-exist add-br br-int
+ovs-vsctl --may-exist add-br br-ex
+```
+Create port for external network
+```bash
+ovs-vsctl --may-exist add-port br-ex [eth1]
+```
+### OVS commands for viewing configuration
+OpenVSwitch list of bridges
+```bash
+ovs-vsctl show 
+```
+List bridges
+```bash
+ovs-vsctl list-br 
+```
+List config db for open vSwitch
+```bash
+ovs-vsctl list Open_vSwitch 
+```
+Checks / shows openflow rules
+```bash
+ovs-ofctl dump-flows [br-tun]
+```
+Show known mac addresses
+```bash
+ovs-appctl fdb/show [br-enp2s0] 
+```
+# Projects, Users, Roles 
+- User Must Have Project to Log In
+  - The exception is admin when using RBAC
+Create project
+```bash
+openstack project create --domain DOMAIN_NAME --description "[description]" PROJECT_NAME
+```
+Create user
+```bash
+openstack user create --domain DOMAIN_NAME --password PASSWORD USERNAME
+```
+Add role 
+- Connect user and project
+```bash
+openstack role add --project [project name] --user [username] [role]
+```
+List all roles in openstack
 ```bash
 openstack role list 
 ```
-roles assigned to user
+Roles assigned to user
 ```bash
 openstack role assignment list --user [user_name] --project [project_name] --names 
 ```
-list users & roles in a project
+List users & roles in a project
 ```bash
 openstack role assignment list --project [project_name] --names 
-openstack project create --domain [dom name] --description "[description]" [project name]
-openstack role add --project [project name] --user [username] [role]
 ```
-
-# Glance Management
+# Glance
+Create image
 ```bash
-openstack image create --disk-format qcow2 --container-format bare --public --file ./centos63.qcow2 centos63-image
+openstack image create --disk-format qcow2 --container-format bare --public --file PATH_TO_IMAGE GLANCE_IMAGE_NAME
+```
+List images
+```bash
 openstack image list
 ```
-check if image is accessible and available; json optional
+Check if image is accessible and available
 ```bash
-openstack image show <image_id> -f json 
+openstack image show IMAGE_NAME
 ```
-download
+Download image from glance
 ```bash
-openstack image save --file test_image.img <image_id>
+openstack image save --file DESTINATION_FILE IMAGE_NAME
 ```
-
-# Neutron & Network Management
+# Cinder
+View volumes
 ```bash
-openstack network agent list
-openstack network service provider list
+openstack volume list
 ```
-
-# OpenVSwitch Management
-## OpenStack Requirements
-- br-provider
-  - port-provider -> Phy port
-  - port-internal -> local ip
-- br-int
-  - port-int -> port-tun
-- br-tun
-  - port-tun -> port-int
-
-## Network Manager
+Show volume details
 ```bash
-nmcli con add type ethernet ifname [link name] con-name [onboot-ovs] ipv4.method disabled ipv6.method ignore connection.autoconnect yes # required profile for bridge
+openstack volume show VOLUME_NAME
 ```
-## Native OVS
-### Show Commands
+Show cinder services
 ```bash
-ovs-vsctl show # open vswitch list of bridges
-ovs-vsctl list-br # br-tun should be present for vxlan or other tunneling
-ovs-vsctl list Open_vSwitch # list config db for open vSwitch
-ovs-vsctl list interface
-ovs-ofctl dump-flows br-tun # checks openflow rules
-ovs-appctl fdb/show br-enp2s0 # show known mac addresses
-```
-### Create Commands
-```bash
-ovs-vsctl add-br [new bridge name]
-ovs-vsctl add-port [bridge name] [phy dev] 
-ovs-vsctl add-br br-tun
-ovs-vsctl add-port br-tun vxlan0 -- set interface vxlan0 type=vxlan options:local_ip=172.22.2.21 options:remote_ip=flow options:key=flow
-```
-
-# Cinder Management
-```bash
-openstack volume pool list --long
-openstack volume backend pool list
 openstack volume service list
 ```
-
-# Nova Management
+View volume pools
 ```bash
-openstack compute service list # parts of nova; requires admin
-nova compute service list --service [nova-compute or other]
-openstack hypervisor list # should be listed with a nonzero number of free VCPUs, RAM, and disk space
-openstack hypervisor show [identifier]
-openstack usage list
-openstack quota show
+openstack volume backend pool list
 ```
+# Managing Openstack
+View service endpoints
+```bash
+openstack endpoint list
+openstack endpoint list --service SERVICE NAME
+```
+
+
+
+
+
+
+
+
