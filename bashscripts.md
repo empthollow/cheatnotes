@@ -1,7 +1,15 @@
-# common elements
+# special bash vars
 ## shebang
 ```bash
 #!/bin/bash 
+```
+## argument vars
+```bash
+$0 = script name
+$1, $2, $3, ... = individual arguments
+$# = count of arguments
+$@ = all arguments as an array
+$* = all arguments as a single string
 ```
 
 ## error handling
