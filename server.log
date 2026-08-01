@@ -1,38 +1,6 @@
-192.168.1.204 - - [11/Mar/2026 07:26:33] "GET /git.md HTTP/1.1" 200 -
-192.168.1.204 - - [11/Mar/2026 07:26:33] code 404, message File not found
-192.168.1.204 - - [11/Mar/2026 07:26:33] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.204 - - [11/Mar/2026 18:15:52] "GET /git.md HTTP/1.1" 200 -
-192.168.1.189 - - [17/Mar/2026 08:18:30] "GET /git.md HTTP/1.1" 200 -
-192.168.1.204 - - [19/Mar/2026 06:07:45] "GET /sysadmin.md HTTP/1.1" 200 -
-192.168.1.204 - - [19/Mar/2026 06:09:32] "GET /regex.md HTTP/1.1" 200 -
-192.168.1.204 - - [23/Mar/2026 04:51:18] "GET /sysadmin.md HTTP/1.1" 200 -
-192.168.1.189 - - [27/Mar/2026 10:25:05] "GET /sysadmin.md HTTP/1.1" 200 -
-192.168.1.189 - - [27/Mar/2026 10:25:05] code 404, message File not found
-192.168.1.189 - - [27/Mar/2026 10:25:05] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.204 - - [29/Mar/2026 05:47:56] "GET /sysadmin.md HTTP/1.1" 200 -
-192.168.1.204 - - [29/Mar/2026 05:47:56] code 404, message File not found
-192.168.1.204 - - [29/Mar/2026 05:47:56] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.189 - - [02/Apr/2026 07:58:57] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [06/Apr/2026 19:28:22] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [06/Apr/2026 19:28:22] code 404, message File not found
-192.168.1.204 - - [06/Apr/2026 19:28:22] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.204 - - [07/Apr/2026 07:43:21] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 07:47:20] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 08:46:02] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 08:49:52] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 14:58:22] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 20:44:45] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [07/Apr/2026 20:45:42] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [08/Apr/2026 06:36:50] "GET /openstack.md HTTP/1.1" 200 -
-192.168.1.204 - - [21/Apr/2026 20:10:59] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [21/Apr/2026 20:11:01] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [06/May/2026 13:13:46] "GET /prompt.md HTTP/1.1" 200 -
-192.168.1.204 - - [06/May/2026 13:13:46] code 404, message File not found
-192.168.1.204 - - [06/May/2026 13:13:46] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.204 - - [09/May/2026 18:28:21] "GET /git.md HTTP/1.1" 200 -
-192.168.1.204 - - [21/May/2026 16:56:10] "GET /git.md HTTP/1.1" 200 -
-192.168.1.204 - - [21/May/2026 16:56:10] code 404, message File not found
-192.168.1.204 - - [21/May/2026 16:56:10] "GET /favicon.ico HTTP/1.1" 404 -
-192.168.1.204 - - [23/May/2026 07:58:24] "GET /git.md HTTP/1.1" 200 -
-192.168.1.204 - - [23/May/2026 07:58:25] code 404, message File not found
-192.168.1.204 - - [23/May/2026 07:58:25] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [01/Aug/2026 07:43:01] "GET / HTTP/1.1" 200 -
+192.168.1.204 - - [01/Aug/2026 07:43:01] code 404, message File not found
+192.168.1.204 - - [01/Aug/2026 07:43:01] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.1.204 - - [01/Aug/2026 07:43:05] "GET /bashscripts.md HTTP/1.1" 200 -
+192.168.1.204 - - [01/Aug/2026 07:47:45] "GET /bashscripts.md HTTP/1.1" 200 -
+192.168.1.204 - - [01/Aug/2026 07:48:37] "GET /bashscripts.md HTTP/1.1" 200 -

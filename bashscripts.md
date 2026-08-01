@@ -1,4 +1,4 @@
-# special bash vars
+# special bash elements
 ## shebang
 ```bash
 #!/bin/bash 
@@ -12,8 +12,23 @@ $@ = all arguments as an array
 $* = all arguments as a single string
 ```
 
-## error handling
-### Error handling function
+# error handling
+## error safety modes
+
+-e (errexit)
+Exits immediately if any command returns a non-zero exit code. Prevents the script from continuing after errors.
+
+-u (nounset)
+Treats undefined variables as errors and exits. Catches typos like $BULD_FILE instead of $BUILD_FILE before they cause silent failures.
+
+-o pipefail
+If any command in a pipe fails, the whole pipeline fails (default is only the last command's exit code counts). Example:
+
+enable three bash safety modes:
+```bash
+set -euo pipefail 
+```
+## Error handling function
 ```bash
 handle_error() {
   echo "Execution error on line $1. Exiting..."
